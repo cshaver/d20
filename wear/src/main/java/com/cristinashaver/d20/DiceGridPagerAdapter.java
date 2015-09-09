@@ -23,11 +23,12 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
     private static final float MAXIMUM_CARD_EXPANSION_FACTOR = 3.0f;
 
     private final Context mContext;
-    private List<DiceRow> mRows;
+    private List<DiceRow> mDiceRows;
 
-    public DiceGridPagerAdapter(Context ctx, FragmentManager fm) {
+    public DiceGridPagerAdapter(Context ctx, List<DiceRow> diceRows, FragmentManager fm) {
         super(fm);
         mContext = ctx;
+        mDiceRows = diceRows;
     }
 
 
@@ -63,7 +64,7 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
 
     @Override
     public int getRowCount() {
-        return mRows.size();
+        return mDiceRows.size();
     }
 
     @Override

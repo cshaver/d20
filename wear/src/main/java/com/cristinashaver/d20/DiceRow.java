@@ -10,7 +10,7 @@ public class DiceRow {
     private int mNumDice;
     private List<Roll> mRollHistory;
     
-    public DiceRow(int numSides, int numDice) {
+    public DiceRow(int numDice, int numSides) {
         mNumSides = numSides;
         mNumDice = numDice;
         mRollHistory = new ArrayList<>();
