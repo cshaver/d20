@@ -27,4 +27,25 @@ public class DiceRow {
     public Roll getLastRoll() {
         return mRollHistory.get(mRollHistory.size() - 1);
     }
+
+    public int getNumSides() {
+        return mNumSides;
+    }
+
+    public int getNumDice() {
+        return mNumDice;
+    }
+
+    public String getDiceNotation() {
+        return mNumDice + "d" + mNumSides;
+    }
+
+    public String getSimpleDiceNotation() {
+        if (mNumDice == 1) {
+            return "d" + mNumSides;
+        }
+        else {
+            return getDiceNotation();
+        }
+    }
 }

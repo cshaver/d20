@@ -27,10 +27,14 @@ public class MainActivity extends Activity {
         stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
-                setupDicePages();
-                setupGridViewPager();
+                layoutInflated(stub);
             }
         });
+    }
+
+    private void layoutInflated(WatchViewStub stub) {
+        setupDicePages();
+        setupGridViewPager();
     }
 
     private void setupDicePages() {

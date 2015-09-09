@@ -36,8 +36,10 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
     public Fragment getFragment(int row, int col) {
         // important things
 
+        DiceRow diceRow = mDiceRows.get(row);
+
         CardFragment fragment = CardFragment.create(
-                "Hello " + row,
+                diceRow.getSimpleDiceNotation(),
                 "Hello " + col);
 
         fragment.setCardGravity(Gravity.BOTTOM);
