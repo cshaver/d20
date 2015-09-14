@@ -1,20 +1,11 @@
 package com.cristinashaver.d20;
 
-import android.app.Activity;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.Fragment;
-import android.support.wearable.view.CardFragment;
 import android.support.wearable.view.FragmentGridPagerAdapter;
 import android.support.wearable.view.GridPagerAdapter;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import java.util.List;
 
@@ -38,14 +29,14 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
 
         DiceRow diceRow = mDiceRows.get(row);
 
-        CardFragment fragment = CardFragment.create(
+        DiceFragment fragment = DiceFragment.newInstance(
                 diceRow.getSimpleDiceNotation(),
                 "Hello " + col);
 
-        fragment.setCardGravity(Gravity.BOTTOM);
-        fragment.setExpansionEnabled(true);
-        fragment.setExpansionDirection(CardFragment.EXPAND_DOWN);
-        fragment.setExpansionFactor(MAXIMUM_CARD_EXPANSION_FACTOR);
+//        fragment.setCardGravity(Gravity.BOTTOM);
+//        fragment.setExpansionEnabled(true);
+//        fragment.setExpansionDirection(CardFragment.EXPAND_DOWN);
+//        fragment.setExpansionFactor(MAXIMUM_CARD_EXPANSION_FACTOR);
         return fragment;
     }
 
