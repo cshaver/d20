@@ -1,5 +1,7 @@
 package com.cristinashaver.d20;
 
+import android.graphics.drawable.Drawable;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +10,13 @@ public class DiceRow {
 
     private int mNumSides;
     private int mNumDice;
+    private int mDiceImage;
     private List<Roll> mRollHistory;
     
-    public DiceRow(int numDice, int numSides) {
+    public DiceRow(int numDice, int numSides, int diceImage) {
         mNumSides = numSides;
         mNumDice = numDice;
+        mDiceImage = diceImage;
         mRollHistory = new ArrayList<>();
     }
 
@@ -32,9 +36,9 @@ public class DiceRow {
         return mNumSides;
     }
 
-    public int getNumDice() {
-        return mNumDice;
-    }
+    public int getNumDice() { return mNumDice; }
+
+    public int getDiceImage() { return mDiceImage; }
 
     public String getDiceNotation() {
         return mNumDice + "d" + mNumSides;

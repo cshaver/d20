@@ -11,36 +11,38 @@
         android:layout_width="match_parent"
         app:layout_box="bottom">
 
+        <android.support.wearable.view.CardFrame
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_gravity="center_horizontal|bottom">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp">
+                <TextView
+                    android:fontFamily="sans-serif-light"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="@string/roll_text"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/RollText" />
+            </LinearLayout>
+        </android.support.wearable.view.CardFrame>
+
     </android.support.wearable.view.CardScrollView>
 
-    <android.support.wearable.view.CardFrame
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:layout_gravity="center_horizontal|bottom">
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:orientation="vertical"
-            android:paddingLeft="5dp">
-            <TextView
-                android:fontFamily="sans-serif-light"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:text="@string/roll_text"
-                android:textColor="@color/black"
-                android:textSize="20sp"
-                android:layout_gravity="center_horizontal"
-                android:id="@+id/RollText" />
-        </LinearLayout>
-    </android.support.wearable.view.CardFrame>
 
     <ImageButton
-        android:layout_width="125dp"
-        android:layout_height="125dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         android:id="@+id/diceButton"
         android:layout_gravity="center"
-        android:contentDescription="20 Sided Die"
+        android:contentDescription="@string/d20_label"
         android:clickable="true"
         android:adjustViewBounds="true"
         android:cropToPadding="false"
@@ -51,11 +53,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20"
-        android:id="@+id/textView"
+        android:text="@string/d20_value"
+        android:id="@+id/diceValue"
         android:layout_gravity="center"
         android:textColor="#000000"
         android:textIsSelectable="false"
-        android:textSize="26dp" />
+        android:textSize="26sp" />
 
 </FrameLayout>

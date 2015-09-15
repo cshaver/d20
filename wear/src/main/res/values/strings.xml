@@ -6,4 +6,16 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="roll_text">Tap to roll</string>
+    <string name="d4_value">4</string>
+    <string name="d6_value">6</string>
+    <string name="d8_value">8</string>
+    <string name="d10_value">10</string>
+    <string name="d12_value">12</string>
+    <string name="d20_value">20</string>
+    <string name="d4_label">4</string>
+    <string name="d6_label">6</string>
+    <string name="d8_label">8</string>
+    <string name="d10_label">10</string>
+    <string name="d12_label">12</string>
+    <string name="d20_label">20</string>
 </resources>

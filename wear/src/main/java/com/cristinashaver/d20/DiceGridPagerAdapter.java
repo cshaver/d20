@@ -22,7 +22,6 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
         mDiceRows = diceRows;
     }
 
-
     @Override
     public Fragment getFragment(int row, int col) {
         // important things
@@ -31,12 +30,8 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
 
         DiceFragment fragment = DiceFragment.newInstance(
                 diceRow.getSimpleDiceNotation(),
-                "Hello " + col);
+                diceRow.getDiceImage());
 
-//        fragment.setCardGravity(Gravity.BOTTOM);
-//        fragment.setExpansionEnabled(true);
-//        fragment.setExpansionDirection(CardFragment.EXPAND_DOWN);
-//        fragment.setExpansionFactor(MAXIMUM_CARD_EXPANSION_FACTOR);
         return fragment;
     }
 
@@ -47,12 +42,12 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
 
     @Override
     public Drawable getBackgroundForPage(int row, int column) {
-        if (row == 2 && column == 1) {
-            return mContext.getResources().getDrawable(R.drawable.dice, null);
-        }
-        else {
+//        if (row == 2 && column == 1) {
+//            return mContext.getResources().getDrawable(R.drawable.dice, null);
+//        }
+//        else {
             return GridPagerAdapter.BACKGROUND_NONE;
-        }
+//        }
     }
 
     @Override

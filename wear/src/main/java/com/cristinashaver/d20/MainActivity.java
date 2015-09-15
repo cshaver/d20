@@ -1,14 +1,9 @@
 package com.cristinashaver.d20;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.wearable.view.GridViewPager;
 import android.support.wearable.view.WatchViewStub;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,12 +33,12 @@ public class MainActivity extends Activity {
     }
 
     private void setupDicePages() {
-        mDiceRows.add(new DiceRow(1, 4));
-        mDiceRows.add(new DiceRow(1, 6));
-        mDiceRows.add(new DiceRow(1, 8));
-        mDiceRows.add(new DiceRow(1, 10));
-        mDiceRows.add(new DiceRow(1, 12));
-        mDiceRows.add(new DiceRow(1, 20));
+        mDiceRows.add(new DiceRow(1, 4, R.drawable.d4));
+        mDiceRows.add(new DiceRow(1, 6, R.drawable.d6));
+        mDiceRows.add(new DiceRow(1, 8, R.drawable.d8));
+        mDiceRows.add(new DiceRow(1, 10, R.drawable.d10));
+        mDiceRows.add(new DiceRow(1, 12, R.drawable.d12));
+        mDiceRows.add(new DiceRow(1, 20, R.drawable.d20));
     }
 
     private void setupGridViewPager() {
