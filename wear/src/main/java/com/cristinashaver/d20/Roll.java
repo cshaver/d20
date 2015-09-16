@@ -29,6 +29,14 @@ public class Roll {
         return new Throw(numFaces, value);
     }
 
+    public int getValue() {
+        int total = 0;
+        for (Throw dieThrow : mThrows) {
+            total += dieThrow.getValue();
+        }
+        return total;
+    }
+
     public Throw getThrow(int index) {
         return mThrows.get(index);
     }

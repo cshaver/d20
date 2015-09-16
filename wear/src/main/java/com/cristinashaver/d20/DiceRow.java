@@ -20,8 +20,9 @@ public class DiceRow {
         mRollHistory = new ArrayList<>();
     }
 
-    public void rollDice() {
+    public Roll rollDice() {
         mRollHistory.add(new Roll(mNumDice, mNumSides));
+        return getLastRoll();
     }
 
     public List<Roll> getRollHistory() {
@@ -36,9 +37,13 @@ public class DiceRow {
         return mNumSides;
     }
 
-    public int getNumDice() { return mNumDice; }
+    public int getNumDice() {
+        return mNumDice;
+    }
 
-    public int getDiceImage() { return mDiceImage; }
+    public int getDiceImage() {
+        return mDiceImage;
+    }
 
     public String getDiceNotation() {
         return mNumDice + "d" + mNumSides;

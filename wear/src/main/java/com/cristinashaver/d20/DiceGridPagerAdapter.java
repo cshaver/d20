@@ -11,8 +11,6 @@ import java.util.List;
 
 public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
 
-    private static final float MAXIMUM_CARD_EXPANSION_FACTOR = 3.0f;
-
     private final Context mContext;
     private List<DiceRow> mDiceRows;
 
@@ -28,11 +26,11 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
 
         DiceRow diceRow = mDiceRows.get(row);
 
-        DiceFragment fragment = DiceFragment.newInstance(
+        return DiceFragment.newInstance(
                 diceRow.getSimpleDiceNotation(),
-                diceRow.getDiceImage());
-
-        return fragment;
+                diceRow.getDiceImage(),
+                row,
+                col);
     }
 
     @Override

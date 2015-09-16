@@ -1,18 +1,15 @@
 package com.cristinashaver.d20;
 
-import android.app.Activity;
-import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.support.wearable.view.CardFrame;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,13 +19,21 @@ import org.w3c.dom.Text;
  * Use the {@link DiceFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DiceFragment extends Fragment {
+public class DiceFragment extends Fragment
+                          implements View.OnClickListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_DICE_NOTATION = "diceNotation";
     private static final String ARG_DICE_IMAGE = "diceImage";
+    private static final String ARG_ROW = "row";
+    private static final String ARG_COL = "col";
 
     private String mDiceNotation;
     private int mDiceImage;
+    private int mRow;
+    private int mCol;
+
+    private TextView mDiceValue;
+    private CardFrame mRollTextCardFrame;
 
     private OnFragmentInteractionListener mListener;
 
@@ -40,11 +45,13 @@ public class DiceFragment extends Fragment {
      * @return A new instance of fragment DiceFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DiceFragment newInstance(String diceNotation, int diceImage) {
+    public static DiceFragment newInstance(String diceNotation, int diceImage, int row, int col) {
         DiceFragment fragment = new DiceFragment();
         Bundle args = new Bundle();
         args.putString(ARG_DICE_NOTATION, diceNotation);
         args.putInt(ARG_DICE_IMAGE, diceImage);
+        args.putInt(ARG_ROW, row);
+        args.putInt(ARG_COL, col);
         fragment.setArguments(args);
         return fragment;
     }
@@ -59,6 +66,8 @@ public class DiceFragment extends Fragment {
         if (getArguments() != null) {
             mDiceNotation = getArguments().getString(ARG_DICE_NOTATION);
             mDiceImage = getArguments().getInt(ARG_DICE_IMAGE);
+            mRow = getArguments().getInt(ARG_ROW);
+            mCol = getArguments().getInt(ARG_COL);
         }
     }
 
@@ -68,20 +77,16 @@ public class DiceFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dice, container, false);
 
-        TextView diceValue = (TextView) view.findViewById(R.id.diceValue);
-        diceValue.setText(mDiceNotation);
+        mDiceValue = (TextView) view.findViewById(R.id.diceValue);
+        mDiceValue.setText(mDiceNotation);
+
+        mRollTextCardFrame = (CardFrame) view.findViewById(R.id.RollTextCardFrame);
 
         ImageButton diceButton = (ImageButton) view.findViewById(R.id.diceButton);
         diceButton.setBackground(getActivity().getDrawable(mDiceImage));
+        diceButton.setOnClickListener(this);
 
         return view;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -90,16 +95,19 @@ public class DiceFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p/>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
+    public void onClick(View view) {
+        Roll roll = ((MainActivity) getActivity()).rollDiceButton(mRow);
+        displayRoll(roll.getValue());
+        Log.d("ROLL", "" + roll.getValue());
+    }
+
+    private void displayRoll(int value) {
+        mDiceValue.setText("" + value);
+        mRollTextCardFrame.animate()
+                .translationY(mRollTextCardFrame.getHeight())
+                .setDuration(getResources().getInteger(android.R.integer.config_shortAnimTime));
+    }
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);

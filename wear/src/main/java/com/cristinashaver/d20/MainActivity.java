@@ -45,4 +45,9 @@ public class MainActivity extends Activity {
         final GridViewPager pager = (GridViewPager) findViewById(R.id.pager);
         pager.setAdapter(new DiceGridPagerAdapter(this, mDiceRows, getFragmentManager()));
     }
+
+    public Roll rollDiceButton(int row) {
+        DiceRow diceRow = mDiceRows.get(row);
+        return diceRow.rollDice();
+    }
 }
