@@ -2,6 +2,7 @@ package com.cristinashaver.d20;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.wearable.view.GridViewPager;
 import android.support.wearable.view.WatchViewStub;
 
@@ -48,6 +49,17 @@ public class MainActivity extends Activity {
 
     public Roll rollDiceButton(int row) {
         DiceRow diceRow = mDiceRows.get(row);
+
+        Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        long[] vibrationPattern = {0, 500, 50, 300};
+        final int indexInPatternToRepeat = -1;
+        vibrator.vibrate(vibrationPattern, indexInPatternToRepeat);
+
         return diceRow.rollDice();
+    }
+
+    public List<Roll> getRollHistory(int row) {
+        DiceRow diceRow = mDiceRows.get(row);
+        return diceRow.getRollHistory();
     }
 }

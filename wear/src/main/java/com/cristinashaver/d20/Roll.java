@@ -37,6 +37,10 @@ public class Roll {
         return total;
     }
 
+    public int getThrowCount() {
+        return mThrows.size();
+    }
+
     public Throw getThrow(int index) {
         return mThrows.get(index);
     }

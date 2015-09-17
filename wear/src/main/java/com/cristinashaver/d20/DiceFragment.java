@@ -3,6 +3,7 @@ package com.cristinashaver.d20;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Vibrator;
 import android.support.wearable.view.CardFrame;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -98,7 +101,6 @@ public class DiceFragment extends Fragment
     public void onClick(View view) {
         Roll roll = ((MainActivity) getActivity()).rollDiceButton(mRow);
         displayRoll(roll.getValue());
-        Log.d("ROLL", "" + roll.getValue());
     }
 
     private void displayRoll(int value) {

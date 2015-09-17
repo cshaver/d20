@@ -9,21 +9,23 @@
         android:id="@+id/card_scroll_view"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        app:layout_box="bottom">
+        app:layout_box="bottom"
+        android:layout_gravity="bottom">
 
         <android.support.wearable.view.CardFrame
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_gravity="center_horizontal|bottom"
-            android:id="@+id/RollTextCardFrame">
+            android:id="@+id/RollTextCardFrame"
+            android:layoutMode="clipBounds">
 
             <LinearLayout
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
-                android:paddingStart="5dp"
-                android:paddingEnd="5dp"
-                android:id="@+id/RollTextLayout">
+                android:id="@+id/RollTextLayout"
+                android:measureWithLargestChild="false"
+                android:baselineAligned="false">
                 <TextView
                     android:fontFamily="sans-serif-light"
                     android:layout_height="wrap_content"
@@ -32,7 +34,8 @@
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     android:layout_gravity="center_horizontal"
-                    android:id="@+id/RollText" />
+                    android:id="@+id/RollText"
+                    android:linksClickable="true" />
             </LinearLayout>
         </android.support.wearable.view.CardFrame>
 
