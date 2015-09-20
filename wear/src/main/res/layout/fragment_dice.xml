@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.cristinashaver.d20.DiceFragment">
+    tools:context="com.cristinashaver.d20.DiceRoller.DiceRollerFragment">
 
     <android.support.wearable.view.CardScrollView
         android:id="@+id/card_scroll_view"

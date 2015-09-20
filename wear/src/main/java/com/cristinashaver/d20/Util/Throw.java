@@ -1,4 +1,4 @@
-package com.cristinashaver.d20;
+package com.cristinashaver.d20.Util;
 
 /**
  * Single Dice Roll
@@ -18,5 +18,9 @@ public class Throw {
 
     public int getValue() {
         return mValue;
+    }
+
+    public String getValueText() {
+        return String.valueOf(getValue());
     }
 }

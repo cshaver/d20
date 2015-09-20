@@ -6,12 +6,17 @@ import android.os.Vibrator;
 import android.support.wearable.view.GridViewPager;
 import android.support.wearable.view.WatchViewStub;
 
+import com.cristinashaver.d20.DiceGrid.DiceGridPagerAdapter;
+import com.cristinashaver.d20.DiceGrid.DiceRow;
+import com.cristinashaver.d20.Util.Roll;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Activity {
 
     private List<DiceRow> mDiceRows = new ArrayList<>();
+    private DiceGridPagerAdapter mDiceGridPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +49,8 @@ public class MainActivity extends Activity {
 
     private void setupGridViewPager() {
         final GridViewPager pager = (GridViewPager) findViewById(R.id.pager);
-        pager.setAdapter(new DiceGridPagerAdapter(this, mDiceRows, getFragmentManager()));
+        mDiceGridPagerAdapter = new DiceGridPagerAdapter(this, mDiceRows, getFragmentManager());
+        pager.setAdapter(mDiceGridPagerAdapter);
     }
 
     public Roll rollDiceButton(int row) {
@@ -55,11 +61,17 @@ public class MainActivity extends Activity {
         final int indexInPatternToRepeat = -1;
         vibrator.vibrate(vibrationPattern, indexInPatternToRepeat);
 
-        return diceRow.rollDice();
+        Roll roll = diceRow.rollDice();
+
+        return roll;
     }
 
     public List<Roll> getRollHistory(int row) {
         DiceRow diceRow = mDiceRows.get(row);
         return diceRow.getRollHistory();
+    }
+
+    public DiceGridPagerAdapter getDiceGridPagerAdapter() {
+        return mDiceGridPagerAdapter;
     }
 }

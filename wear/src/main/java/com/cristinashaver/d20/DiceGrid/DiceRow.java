@@ -1,6 +1,6 @@
-package com.cristinashaver.d20;
+package com.cristinashaver.d20.DiceGrid;
 
-import android.graphics.drawable.Drawable;
+import com.cristinashaver.d20.Util.Roll;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +47,15 @@ public class DiceRow {
 
     public String getDiceNotation() {
         return mNumDice + "d" + mNumSides;
+    }
+
+    public String getInitialText() {
+        if (mRollHistory.size() > 0) {
+            return String.valueOf(getLastRoll().getValue());
+        }
+        else {
+            return getSimpleDiceNotation();
+        }
     }
 
     public String getSimpleDiceNotation() {

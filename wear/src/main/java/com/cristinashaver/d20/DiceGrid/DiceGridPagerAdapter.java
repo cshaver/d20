@@ -1,12 +1,15 @@
-package com.cristinashaver.d20;
+package com.cristinashaver.d20.DiceGrid;
 
 import android.app.FragmentManager;
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.app.Fragment;
 import android.support.wearable.view.FragmentGridPagerAdapter;
 import android.support.wearable.view.GridPagerAdapter;
+
+import com.cristinashaver.d20.DiceHistory.DiceHistoryFragment;
+import com.cristinashaver.d20.DiceRoller.DiceRollerFragment;
+import com.cristinashaver.d20.R;
 
 import java.util.List;
 
@@ -35,12 +38,13 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
         }
     }
 
-    private DiceFragment getDiceFragment(DiceRow diceRow, int row, int col) {
-        return DiceFragment.newInstance(
+    private DiceRollerFragment getDiceFragment(DiceRow diceRow, int row, int col) {
+        return DiceRollerFragment.newInstance(
                 diceRow.getSimpleDiceNotation(),
                 diceRow.getDiceImage(),
                 row,
-                col);
+                col,
+                diceRow.getInitialText());
     }
 
     private DiceHistoryFragment getDiceHistoryFragment(DiceRow diceRow, int row, int col) {
@@ -50,12 +54,13 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
                 col);
     }
 
-    private DiceFragment getDiceOptionsFragment(DiceRow diceRow, int row, int col) {
-        return DiceFragment.newInstance(
+    private DiceRollerFragment getDiceOptionsFragment(DiceRow diceRow, int row, int col) {
+        return DiceRollerFragment.newInstance(
                 diceRow.getSimpleDiceNotation(),
                 diceRow.getDiceImage(),
                 row,
-                col);
+                col,
+                diceRow.getInitialText());
     }
 
     @Override

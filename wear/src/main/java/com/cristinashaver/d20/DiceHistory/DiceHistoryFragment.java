@@ -1,16 +1,21 @@
-package com.cristinashaver.d20;
+package com.cristinashaver.d20.DiceHistory;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.wearable.view.CardFrame;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
-import android.widget.ImageButton;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.cristinashaver.d20.MainActivity;
+import com.cristinashaver.d20.R;
+import com.cristinashaver.d20.Util.Roll;
 
 import java.util.List;
 
@@ -79,9 +84,9 @@ public class DiceHistoryFragment extends Fragment {
 
         fetchRollHistory();
 
-        ExpandableListView listView = (ExpandableListView) view.findViewById(R.id.list);
+        ListView listView = (ListView) view.findViewById(R.id.list);
 
-        listView.setAdapter((new DiceHistoryAdapter(inflater, mRollHistory)));
+        listView.setAdapter(new DiceHistoryAdapter((Context) getActivity(), inflater, mRollHistory));
 
         return view;
     }

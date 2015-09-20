@@ -1,4 +1,4 @@
-package com.cristinashaver.d20;
+package com.cristinashaver.d20.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +35,22 @@ public class Roll {
             total += dieThrow.getValue();
         }
         return total;
+    }
+
+    public String getAllThrowsText() {
+        String text = "";
+        for (Throw dieThrow : mThrows) {
+            text += dieThrow.getValueText() + ", ";
+        }
+
+        // remove last comma and space
+        text = text.substring(0, text.length() - 2);
+
+        return text;
+    }
+
+    public String getValueText() {
+        return String.valueOf(getValue());
     }
 
     public int getThrowCount() {
