@@ -1,5 +1,7 @@
 package com.cristinashaver.d20.Util;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -39,12 +41,13 @@ public class Roll {
 
     public String getAllThrowsText() {
         String text = "";
-        for (Throw dieThrow : mThrows) {
-            text += dieThrow.getValueText() + ", ";
-        }
 
-        // remove last comma and space
-        text = text.substring(0, text.length() - 2);
+        for (int i = 0; i < mThrows.size(); i++) {
+            text += mThrows.get(i).getValueText();
+            if (i < mThrows.size() - 1) {
+                text += ", ";
+            }
+        }
 
         return text;
     }

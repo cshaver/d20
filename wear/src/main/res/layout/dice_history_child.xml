@@ -7,5 +7,5 @@
     android:id="@+id/item"
     android:gravity="center"
     android:textAlignment="center"
-    android:text="howdy"
+    android:text="20"
     android:clickable="false" />

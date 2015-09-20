@@ -8,6 +8,7 @@ import java.util.List;
 public class DiceRow {
     public static final int ROW_LENGTH = 3;
 
+    private final int MAX_ROLL_HISTORY_LENGTH = 100;
     private int mNumSides;
     private int mNumDice;
     private int mDiceImage;
@@ -22,7 +23,14 @@ public class DiceRow {
 
     public Roll rollDice() {
         mRollHistory.add(new Roll(mNumDice, mNumSides));
+        trimRollHistory();
         return getLastRoll();
+    }
+
+    public void trimRollHistory() {
+        if (mRollHistory.size() > MAX_ROLL_HISTORY_LENGTH) {
+            mRollHistory = mRollHistory.subList(mRollHistory.size() - MAX_ROLL_HISTORY_LENGTH, mRollHistory.size() - 1);
+        }
     }
 
     public List<Roll> getRollHistory() {

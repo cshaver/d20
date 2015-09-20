@@ -71,9 +71,10 @@ public class DiceHistoryAdapter implements ListAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Roll roll = mRollHistory.get(position);
         String allThrowsText = roll.getAllThrowsText();
+        String valueText = roll.getValueText();
 
         // if roll was complex (multiple die), show value and sub throws
-        if (allThrowsText.length() > 0 || !allThrowsText.equals(roll.getValueText())) {
+        if (allThrowsText.length() > 0 && !allThrowsText.equals(valueText)) {
             convertView = mInflater.inflate(R.layout.dice_history_child_with_subitem, null);
 
             TextView subItem = (TextView) convertView.findViewById(R.id.subItem);
@@ -87,6 +88,10 @@ public class DiceHistoryAdapter implements ListAdapter {
         // do stuff to history child view from roll
         TextView item = (TextView) convertView.findViewById(R.id.item);
         item.setText(roll.getValueText());
+
+        if (position == mRollHistory.size() - 1) {
+            item.setPadding(0, 0, 0, 100);
+        }
 
         return convertView;
     }
