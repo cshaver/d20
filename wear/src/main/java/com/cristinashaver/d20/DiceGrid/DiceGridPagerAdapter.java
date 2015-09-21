@@ -44,7 +44,8 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
                 diceRow.getDiceImage(),
                 row,
                 col,
-                diceRow.getInitialText());
+                diceRow.getInitialText(),
+                diceRow.getRollHistory().size() == 0);
     }
 
     private DiceHistoryFragment getDiceHistoryFragment(DiceRow diceRow, int row, int col) {
@@ -60,7 +61,8 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
                 diceRow.getDiceImage(),
                 row,
                 col,
-                diceRow.getInitialText());
+                diceRow.getInitialText(),
+                diceRow.getRollHistory().size() > 0);
     }
 
     @Override
@@ -70,15 +72,7 @@ public class DiceGridPagerAdapter extends FragmentGridPagerAdapter {
 
     @Override
     public Drawable getBackgroundForPage(int row, int col) {
-//        if (col == 1) {
-////            return mContext.getDrawable(R.color.semitransparent_grey).setAlpha(100);
-//            Drawable drawable = mContext.getDrawable(R.drawable.dice);
-//            drawable.setAlpha(100);
-//            return drawable;
-//        }
-//        else {
-            return GridPagerAdapter.BACKGROUND_NONE;
-//        }
+        return GridPagerAdapter.BACKGROUND_NONE;
     }
 
     @Override
